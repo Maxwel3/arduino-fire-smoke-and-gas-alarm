@@ -159,6 +159,8 @@ void loop()
   int val_master_power = digitalRead(pin_master_power_fault); //check if the Master Arduino has lost power
   int val_gas = digitalRead(A3); //check if the Master is Outputting the gas warn signal
   
+  Serial.println(val_gas);
+  
   btn_state = digitalRead(pin_Button); //check if the Button is pressed
   
   if (val_master_power != HIGH) //excec if the Master Arduino has lost power
@@ -212,7 +214,7 @@ void receiveEvent(int howMany)
     set_led(255,0,false); //set the LEDs to red
     alarmstate = true; //set the alarmstate variable to true
   }
-  else if (code == 255) // excec if the code is not 200 but 255 (no alert / clear)
+  else if (code == 255 && digitalRead(A3) == HIGH) // excec if the code is not 200 but 255 (no alert / clear) and if the master power failure is not detected
   {
     lcd_control("Fans: OFF", "Alarm: OFF"); //Set the Text on the LCD
     
