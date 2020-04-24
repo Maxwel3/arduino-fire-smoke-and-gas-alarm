@@ -1,1 +1,1 @@
-# Arduino-Fire-Smoke-and-Gas-Alarm
+# Arduino Fire Smoke and Gas Alarm
